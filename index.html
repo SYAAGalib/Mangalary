@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manga Reader</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="title-group">
+        <h1>Mangalary</h1>
+        <p id="current-series" class="current-series" aria-live="polite"></p>
+      </div>
+      <div class="controls">
+        <button id="back-to-gallery" type="button" class="secondary" hidden>Back to Library</button>
+        <label id="zoom-wrapper" class="zoom-control" hidden>
+          <span>Zoom</span>
+          <input id="zoom-slider" type="range" min="60" max="150" value="100" step="5" />
+        </label>
+        <button id="settings-button" type="button" class="icon-button" aria-label="Settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.61-.22l-2.39.96a7.07 7.07 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 14.05 2h-4.1a.5.5 0 0 0-.49.42l-.36 2.54c-.6.24-1.15.56-1.63.94l-2.39-.96a.5.5 0 0 0-.61.22L2.55 8.5a.5.5 0 0 0 .12.64l2.03 1.58c-.04.3-.06.61-.06.94s.02.64.06.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.43.34.7.22l2.39-.96c.48.38 1.03.7 1.63.94l.36 2.54c.04.25.24.42.49.42h4.1c.25 0 .45-.17.49-.42l.36-2.54c.6-.24 1.15-.56 1.63-.94l2.39.96c.26.12.56.02.7-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7Z"
+              />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section id="status" class="status empty-state">Choose a library folder from settings to get started.</section>
+
+      <section id="gallery" class="gallery" aria-live="polite"></section>
+
+      <section id="reader" class="reader" hidden>
+        <section id="pages" class="pages"></section>
+      </section>
+    </main>
+
+    <template id="page-template">
+      <figure class="page">
+        <img class="page-image" alt="" loading="lazy" />
+      </figure>
+    </template>
+
+    <template id="series-card-template">
+      <article class="series-card" tabindex="0">
+        <div class="series-thumb">
+          <img class="series-image" alt="" loading="lazy" />
+          <span class="series-count"></span>
+        </div>
+        <h2 class="series-title"></h2>
+      </article>
+    </template>
+
+    <input id="folder-input" type="file" webkitdirectory directory multiple hidden />
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
